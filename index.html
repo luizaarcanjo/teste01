@@ -128,14 +128,18 @@
 </head>
 <body>
     <div class="container">
-        <h1>📊 Análise de Clientes</h1>
+        <h1> Dashboard dos Dados</h1>
         
         <div class="botoes">
-            <button onclick="carregarImagem('clusterizacao')">🔍 Clusterização</button>
-            <button onclick="carregarImagem('clv')">💰 CLV</button>
-            <button onclick="carregarImagem('conjoint')">📈 Conjoint</button>
-            <button onclick="carregarImagem('previsao')">🔮 Previsão</button>
-            <button onclick="carregarCSV()">📂 Carregar Dados</button>
+            <button onclick="carregarImagem('cluster')"> Clusterização</button>
+            <button onclick="carregarImagem('clv')"> CLV</button>
+	    <button onclick="carregarImagem('clv-campanha')"> CLV por Campanha</button>
+            <button onclick="carregarImagem('conjoint')"> Conjoint</button>
+            <button onclick="carregarImagem('regressao')"> Previsão</button>
+		
+            <button onclick="carregarCSV('clientes.csv)">Clientes</button>
+            <button onclick="carregarImagem('campanhas.csv')"> Campanhas</button>
+            <button onclick="carregarImagem('transacoes.csv')"> Transações</button>
         </div>
 
         <div class="imagem-container" id="imagemContainer">
@@ -143,15 +147,14 @@
         </div>
 
         <div class="tabela-container" id="tabelaContainer">
-            <div class="status">Clique em "Carregar Dados" para ver as informações</div>
+            <div class="status">Clique em um dos botões de dados para carregar</div>
         </div>
     </div>
 
     <script>
-        // Configuração de caminhos absolutos
         const BASE_URL = window.location.origin;
         
-        async function carregarCSV() {
+        const CSV_CONFIG = {
             const container = document.getElementById('tabelaContainer');
             try {
                 container.innerHTML = '<div class="status">Carregando dados...</div>';
